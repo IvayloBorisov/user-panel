@@ -16,6 +16,7 @@ import {normalizeData} from "../../services/normalize";
 const useStyles = makeStyles({
   root: {
     borderBottom: "none",
+    backgroundColor: "white"
   },
   head: {
     color: "dimgrey",
@@ -26,13 +27,11 @@ const useStyles = makeStyles({
 
 const TableComponent = ({selectedValue}) => {
   const { members, teams, locations } = useContext(AppContext);
-  // const [user, setUser] = useState([]);
   const classes = useStyles();
 
   const normalizeTeams = normalizeData(teams, "_id");
   const normalizeLocations = normalizeData(locations, "_id");
 
-  // console.log(selectedValue)
   const membersList = members?.map((member) => {
     if(selectedValue) {
     }
