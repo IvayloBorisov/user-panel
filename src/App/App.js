@@ -1,13 +1,15 @@
-import './App.css';
-import TableComponent from '../components/Table/Table';
+import { PageHeader } from "../components";
+import { AppProvider } from "../context/apiContext";
+import "./App.css";
 
 const App = () => {
   return (
     <div className="App">
-     <h1>Hello</h1>
-     <TableComponent />
+      <AppProvider>
+        <PageHeader />
+      </AppProvider>
     </div>
   );
-}
+};
 
 export default App;
