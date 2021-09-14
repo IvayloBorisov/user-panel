@@ -3,3 +3,5 @@ export {default as TableRowComponent} from './TableRow/TableRow';
 export {default as PageHeader} from './PageHeader/PageHeader';
 export {default as SelectComponent} from './Select/Select';
 export {default as SearchComponent} from './Search/SearchComponent';
+export {default as NavComponent} from './Navigation/Navigation';
+export {default as ButtonComponent} from './Button/Button';

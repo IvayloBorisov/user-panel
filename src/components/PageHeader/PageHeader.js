@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Grid, Container } from "@material-ui/core";
+import { Grid, Container, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import { SelectComponent, Table, SearchComponent } from "../index";
 import { AppContext } from "../../context/apiContext";
@@ -13,7 +13,8 @@ const formFields = {
 const useStyles = makeStyles({
   root: {
     padding: '20px 0 20px 25px',
-    spacing: '20px'
+    spacing: '20px',
+    backgroundColor: 'white'
   }
 
 });
@@ -33,8 +34,8 @@ const PageHeader = () => {
   };
 
   return (
-    <div>
-    <Grid spacing={2} container className={classes.root}>
+    <Paper className={classes.root}>
+    <Grid spacing={2} container >
       <SearchComponent
         name="searchValue"
         value={selectedValue.searchValue}
@@ -50,11 +51,11 @@ const PageHeader = () => {
        data={teams}
        onChange={handleChange} 
       />
+
     </Grid>
-
-
       <Table selectedValue={selectedValue} />
-      </div>
+      </Paper>
+
   );
 };
 

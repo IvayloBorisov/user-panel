@@ -1,12 +1,12 @@
-import { PageHeader } from "../components";
+import HomePage from "../pages/Home/HomePage";
 import { AppProvider } from "../context/apiContext";
-import "./App.css";
+// import "./App.css";
 
 const App = () => {
   return (
     <div className="App">
       <AppProvider>
-        <PageHeader />
+        <HomePage />
       </AppProvider>
     </div>
   );
