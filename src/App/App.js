@@ -1,13 +1,16 @@
 import HomePage from "../pages/Home/HomePage";
-import { AppProvider } from "../context/apiContext";
+import { MembersProvider } from "../context/membersContext";
+import {TeamsLocationsProvider} from '../context/teamsLocationsContext';
 // import "./App.css";
 
 const App = () => {
   return (
     <div className="App">
-      <AppProvider>
-        <HomePage />
-      </AppProvider>
+      <MembersProvider>
+        <TeamsLocationsProvider>
+          <HomePage />
+        </TeamsLocationsProvider>
+      </MembersProvider>
     </div>
   );
 };

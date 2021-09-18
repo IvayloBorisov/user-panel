@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { Grid, Container, Paper } from "@material-ui/core";
+import { Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import { SelectComponent, Table, SearchComponent } from "../index";
-import { AppContext } from "../../context/apiContext";
+import { TeamsLocationsContext } from "../../context/teamsLocationsContext";
 
 const formFields = {
   searchValue: "",
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 const PageHeader = () => {  
-  const { locations, teams } = useContext(AppContext);
+  const teamsLocationsContext = useContext(TeamsLocationsContext);
   const [selectedValue, setSelectedValue] = useState(formFields);
   const classes = useStyles();
 
@@ -43,19 +43,18 @@ const PageHeader = () => {
       />
       <SelectComponent
         type="locations"
-        data={locations}
+        data={teamsLocationsContext.locations}
         onChange={handleChange}
       />
       <SelectComponent
        type="teams"
-       data={teams}
+       data={teamsLocationsContext.teams}
        onChange={handleChange} 
       />
 
     </Grid>
       <Table selectedValue={selectedValue} />
-      </Paper>
-
+    </Paper>
   );
 };
 

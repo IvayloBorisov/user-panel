@@ -1,6 +1,7 @@
 import { Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import { NavComponent, PageHeader } from "../../components";
+import { ModalProvider } from "../../context/modalContext";
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +15,9 @@ const HomePage = () => {
 
   return (
     <Paper className={classes.root}>
-      <NavComponent />
+      <ModalProvider>
+        <NavComponent />
+      </ModalProvider>
       <PageHeader />
     </Paper>
   );
