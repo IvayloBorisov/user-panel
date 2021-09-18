@@ -5,3 +5,6 @@ export {default as SelectComponent} from './Select/Select';
 export {default as SearchComponent} from './Search/SearchComponent';
 export {default as NavComponent} from './Navigation/Navigation';
 export {default as ButtonComponent} from './Button/Button';
+export {default as FormMember} from './Form/FormMember';
+export {default as DatePickerComponent} from './DatePicker/DatePicker';
+export {default as Popup} from './Popup/Popup';

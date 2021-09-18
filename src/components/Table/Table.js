@@ -10,7 +10,8 @@ import {
   TableBody,
 } from "@material-ui/core";
 import { TableRowComponent } from "../index";
-import { AppContext } from "../../context/apiContext";
+import { MembersContext } from "../../context/membersContext";
+import {TeamsLocationsContext} from '../../context/teamsLocationsContext'
 import {normalizeData} from "../../services/normalize";
 
 const useStyles = makeStyles({
@@ -25,16 +26,16 @@ const useStyles = makeStyles({
   },
 });
 
-const TableComponent = ({selectedValue}) => {
-  const { members, teams, locations } = useContext(AppContext);
+const TableComponent = () => {
+  const {membersState} = useContext(MembersContext);
+  const {teamsLocationsCtx} = useContext(TeamsLocationsContext);
   const classes = useStyles();
 
-  const normalizeTeams = normalizeData(teams, "_id");
-  const normalizeLocations = normalizeData(locations, "_id");
+  const normalizeTeams = normalizeData(teamsLocationsCtx.teams, "_id");
+  const normalizeLocations = normalizeData(teamsLocationsCtx.locations, "_id");
 
-  const membersList = members?.map((member) => {
-    if(selectedValue) {
-    }
+  const membersList = membersState.members?.map((member) => {
+    // console.log(member)
     if (member.team) {
       member.locationName = normalizeLocations[member.office].name;
       member.teamName = normalizeTeams[member.team].name;

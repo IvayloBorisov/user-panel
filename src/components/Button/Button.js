@@ -1,26 +1,29 @@
 import { Button, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
-const ButtonComponent = ({ title, color }) => {
+const ButtonComponent = ({btnValues, onClick}) => {
+
+  const {variant,title, backgroundColor, textColor, name, type} = btnValues;
+
   const useStyles = makeStyles({
     root: {
       textTransform: "none",
       padding: "6px 40px 6px 40px",
-      backgroundColor: `${color}`,
-      color: "white",
+      backgroundColor: `${backgroundColor}`,
+      color: `${textColor}`,
     },
   });
 
   const classes = useStyles();
 
-  const handleClick = () => {};
-
   return (
     <Grid item>
       <Button
-        onClick={handleClick}
+        name={name}
+        onClick={onClick}
         className={classes.root}
-        variant="contained"
+        variant={variant}
+        type={type}
       >
         {title}
       </Button>
