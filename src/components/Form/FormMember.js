@@ -111,6 +111,7 @@ const FormMember = () => {
             }}
           >
             <Grid
+            item
               xs={12}
               style={{ height: 50, borderBottom: "1px solid dimgrey",  }}
             >
@@ -125,13 +126,13 @@ const FormMember = () => {
               <Typography>Name *</Typography>
               <TextField
               // error
-                fullWidth
+                // fullWidth
                 variant="outlined"
                 label="Full Name..."
                 name="name"
                 onChange={onChangeHandler}
                 value={values.name}
-                helperText="This field is required"
+                // helperText="This field is required"
               />
             </Grid>
 
@@ -144,7 +145,7 @@ const FormMember = () => {
             <Grid item xs={5}>
               <Typography>Email</Typography>
               <TextField
-                fullWidth
+                // fullWidth
                 type="email"
                 variant="outlined"
                 label="Contact Email..."
@@ -156,7 +157,7 @@ const FormMember = () => {
             <Grid item xs={5}>
               <Typography>Phone</Typography>
               <TextField
-                fullWidth
+                // fullWidth
                 variant="outlined"
                 label="Phone number..."
                 name="phone"
@@ -168,7 +169,7 @@ const FormMember = () => {
             </Grid>
               <DatePickerComponent selectedDate={values.startDate} handleDateChange={handleDateChange} />
             <Grid
-              fullwidth
+              // fullwidth
               container
               justifyContent="flex-end"
               spacing={2}

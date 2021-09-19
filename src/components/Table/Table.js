@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { makeStyles } from "@material-ui/styles";
 import {
   TableContainer,
@@ -8,11 +8,14 @@ import {
   TableCell,
   Checkbox,
   TableBody,
+  Grid
 } from "@material-ui/core";
 import { TableRowComponent } from "../index";
 import { MembersContext } from "../../context/membersContext";
 import {TeamsLocationsContext} from '../../context/teamsLocationsContext'
 import {normalizeData} from "../../services/normalize";
+import {SortingComponent} from '../index';
+import { selectMember } from "../../context/actions";
 
 const useStyles = makeStyles({
   root: {
@@ -35,8 +38,7 @@ const TableComponent = () => {
   const normalizeLocations = normalizeData(teamsLocationsCtx.locations, "_id");
 
   const membersList = membersState.members?.map((member) => {
-    // console.log(member)
-    if (member.team) {
+    if (member.team && normalizeLocations && normalizeTeams) {
       member.locationName = normalizeLocations[member.office].name;
       member.teamName = normalizeTeams[member.team].name;
     }
@@ -44,8 +46,20 @@ const TableComponent = () => {
     return <TableRowComponent key={member._id} memberInfo={member} />;
   });
 
+
+  const tableClickHandler = (sortingCriteria, selectedColumn) => {
+     membersList.sort((a, b) => {
+       if(sortingCriteria === 'asc') {
+        //  console.log(selectedColumn)
+        return a.props.memberInfo[selectedColumn] - b.props.memberInfo[selectedColumn]
+       }
+
+       return b.props.memberInfo.selectedColumn - a.props.memberInfo.selectedColumn
+     });
+  }
+
   return (
-    <TableContainer>
+    <TableContainer onClick={tableClickHandler}>
       <Table>
         <TableHead>
           <TableRow>
@@ -57,15 +71,21 @@ const TableComponent = () => {
             </TableCell>
             <TableCell classes={{ head: classes.head, root: classes.root }}>
               TEAM
+              <Grid container>
+               <SortingComponent value='teamName' type='asc' onClick={tableClickHandler} />
+               <SortingComponent value='teamName' type='desc' onClick={tableClickHandler}/>
+              </Grid>
             </TableCell>
             <TableCell classes={{ head: classes.head, root: classes.root }}>
               STATUS / LABEL
             </TableCell>
             <TableCell classes={{ head: classes.head, root: classes.root }}>
               CREATED AT
+              <SortingComponent value='createdAt' />
             </TableCell>
             <TableCell classes={{ head: classes.head, root: classes.root }}>
               LOCATION
+              <SortingComponent value='office' />
             </TableCell>
           </TableRow>
         </TableHead>
