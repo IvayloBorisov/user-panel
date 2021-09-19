@@ -8,3 +8,4 @@ export {default as ButtonComponent} from './Button/Button';
 export {default as FormMember} from './Form/FormMember';
 export {default as DatePickerComponent} from './DatePicker/DatePicker';
 export {default as Popup} from './Popup/Popup';
+export {default as SortingComponent} from './SortingComponent/SortingComponent';

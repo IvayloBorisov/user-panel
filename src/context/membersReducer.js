@@ -1,11 +1,11 @@
 import {
-  FETCH_MEMBERS,
   FETCH_SUCCESS,
-  ADD_MEMBER,
   REMOVE_MEMBER_BY_ID,
   SELECT_MEMBER,
   UNSELECT_MEMBER,
+  SORT_MEMBERS
 } from "./actions";
+import sortAlphabet from "../services/sortAlphabet";
 
 export const initState = {
   members: [],
@@ -40,6 +40,11 @@ export const memberReducers = (state, action) => {
           (id) => id !== action.payload
         ),
       };
+      case SORT_MEMBERS:
+        return {
+          ...state,
+          members: sortAlphabet(state.members, action.payload)
+        }
     default:
       return state;
   }
